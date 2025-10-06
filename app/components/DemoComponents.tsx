@@ -158,31 +158,69 @@ type HomeProps = {
 };
 
 export function Home({ setActiveTab }: HomeProps) {
+  const [ordered, setOrdered] = useState<string | null>(null);
+
+  const menuItems = [
+    {
+      name: "Pizza Margherita",
+      description: "Classic pizza with tomato, mozzarella, and basil.",
+      image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80",
+      details: "A timeless Italian favorite, baked fresh with premium ingredients. Served with a side of garlic bread.",
+      price: "$12.99",
+      eta: "20 min"
+    },
+    {
+      name: "Sushi Platter",
+      description: "Assorted sushi rolls and sashimi.",
+      image: "https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80&ixid=M3w5MTc2fDB8MHxzZWFyY2h8Mnx8c3VzaGl8ZW58MHx8MHx8&ixlib=rb-4.0.3",
+      details: "Includes salmon, tuna, and veggie rolls, plus chef's choice sashimi. Soy sauce and wasabi included.",
+      price: "$18.50",
+      eta: "35 min"
+    },
+    {
+      name: "Burger Combo",
+      description: "Juicy beef burger with fries and a drink.",
+      image: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80",
+      details: "Grilled beef patty, cheddar cheese, lettuce, tomato, and house sauce. Served with crispy fries and a soft drink.",
+      price: "$14.00",
+      eta: "25 min"
+    }
+  ];
+
+  const handleOrder = (item: string) => {
+    setOrdered(item);
+    setTimeout(() => setOrdered(null), 2000); // Reset after 2 seconds
+  };
+
   return (
     <main className="mt-8">
       <h2 className="text-3xl font-extrabold mb-6 text-center text-blue-700 drop-shadow">🍽️ Today's Menu</h2>
+      {ordered && (
+        <div className="mb-6 text-center">
+          <span className="inline-block bg-green-100 text-green-800 px-4 py-2 rounded-full shadow animate-bounce">
+            Order placed for <b>{ordered}</b>!
+          </span>
+        </div>
+      )}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {/* Menu Item 1 */}
-        <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl shadow-lg p-6 flex flex-col items-center hover:scale-105 transition-transform">
-          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="Pizza Margherita" className="w-24 h-24 rounded-full mb-4 shadow-md object-cover" />
-          <h3 className="text-xl font-semibold mb-2 text-blue-900">Pizza Margherita</h3>
-          <p className="text-gray-600 mb-4 text-center">Classic pizza with tomato, mozzarella, and basil.</p>
-          <button className="bg-blue-600 text-white px-6 py-2 rounded-full font-bold shadow hover:bg-blue-700 transition">Order</button>
-        </div>
-        {/* Menu Item 2 */}
-        <div className="bg-gradient-to-br from-pink-50 to-pink-100 rounded-2xl shadow-lg p-6 flex flex-col items-center hover:scale-105 transition-transform">
-          <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80" alt="Sushi Platter" className="w-24 h-24 rounded-full mb-4 shadow-md object-cover" />
-          <h3 className="text-xl font-semibold mb-2 text-pink-900">Sushi Platter</h3>
-          <p className="text-gray-600 mb-4 text-center">Assorted sushi rolls and sashimi.</p>
-          <button className="bg-pink-600 text-white px-6 py-2 rounded-full font-bold shadow hover:bg-pink-700 transition">Order</button>
-        </div>
-        {/* Menu Item 3 */}
-        <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-2xl shadow-lg p-6 flex flex-col items-center hover:scale-105 transition-transform">
-          <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80" alt="Burger Combo" className="w-24 h-24 rounded-full mb-4 shadow-md object-cover" />
-          <h3 className="text-xl font-semibold mb-2 text-yellow-900">Burger Combo</h3>
-          <p className="text-gray-600 mb-4 text-center">Juicy beef burger with fries and a drink.</p>
-          <button className="bg-yellow-500 text-white px-6 py-2 rounded-full font-bold shadow hover:bg-yellow-600 transition">Order</button>
-        </div>
+        {menuItems.map((item, idx) => (
+          <div
+            key={item.name}
+            className={`bg-gradient-to-br ${idx === 0 ? 'from-blue-50 to-blue-100' : idx === 1 ? 'from-pink-50 to-pink-100' : 'from-yellow-50 to-yellow-100'} rounded-2xl shadow-lg p-6 flex flex-col items-center hover:scale-105 transition-transform`}
+          >
+            <img src={item.image} alt={item.name} className="w-24 h-24 rounded-full mb-4 shadow-md object-cover" />
+            <h3 className={`text-xl font-semibold mb-2 ${idx === 0 ? 'text-blue-900' : idx === 1 ? 'text-pink-900' : 'text-yellow-900'}`}>{item.name}</h3>
+            <p className="text-gray-600 mb-2 text-center font-medium">{item.description}</p>
+            <p className="text-gray-500 mb-4 text-center text-sm italic">{item.details}</p>
+            <span className="mb-4 text-lg font-bold text-gray-800">{item.price}</span>
+            <button
+              className={`px-6 py-2 rounded-full font-bold shadow transition text-white ${idx === 0 ? 'bg-blue-600 hover:bg-blue-700' : idx === 1 ? 'bg-pink-600 hover:bg-pink-700' : 'bg-yellow-500 hover:bg-yellow-600'}`}
+              onClick={() => handleOrder(item.name)}
+            >
+              Order
+            </button>
+          </div>
+        ))}
       </div>
     </main>
   );
