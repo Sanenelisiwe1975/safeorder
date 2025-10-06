@@ -128,3 +128,24 @@ export default function App() {
 // import { Name, Identity, Address, Avatar, EthBalance } from "@coinbase/onchainkit/identity";
 // import { ConnectWallet, Wallet, WalletDropdown, WalletDropdownDisconnect } from "@coinbase/onchainkit/wallet";
 // Remove all usage of Wallet, ConnectWallet, EthBalance, etc. in the JSX.
+      <main className="mt-8">
+        <h2 className="text-2xl font-bold mb-4">Menu</h2>
+        <div className="grid grid-cols-1 gap-6">
+          {/* Example menu items (safehouses/extraction options) */}
+          <div className="border rounded-lg p-4 shadow-sm bg-white">
+            <h3 className="text-lg font-semibold">Pizza Margherita</h3>
+            <p className="text-gray-600 mb-2">Classic pizza with tomato, mozzarella, and basil.</p>
+            <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Order</button>
+          </div>
+          <div className="border rounded-lg p-4 shadow-sm bg-white">
+            <h3 className="text-lg font-semibold">Sushi Platter</h3>
+            <p className="text-gray-600 mb-2">Assorted sushi rolls and sashimi.</p>
+            <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Order</button>
+          </div>
+          <div className="border rounded-lg p-4 shadow-sm bg-white">
+            <h3 className="text-lg font-semibold">Burger Combo</h3>
+            <p className="text-gray-600 mb-2">Juicy beef burger with fries and a drink.</p>
+            <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Order</button>
+          </div>
+        </div>
+      </main>
