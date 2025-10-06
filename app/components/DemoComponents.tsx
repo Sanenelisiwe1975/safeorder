@@ -199,6 +199,10 @@ export function Home({ setActiveTab }: HomeProps) {
         <div className="mb-6 text-center">
           <span className="inline-block bg-green-100 text-green-800 px-4 py-2 rounded-full shadow animate-bounce">
             Order placed for <b>{ordered}</b>!
+            {(() => {
+              const item = menuItems.find(i => i.name === ordered);
+              return item ? ` (ETA: ${item.eta})` : '';
+            })()}
           </span>
         </div>
       )}
