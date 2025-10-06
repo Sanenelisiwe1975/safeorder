@@ -159,27 +159,27 @@ type HomeProps = {
 
 export function Home({ setActiveTab }: HomeProps) {
   return (
-    <div className="space-y-6 animate-fade-in">
-      <Card title="My First Mini App">
-        <p className="text-[var(--app-foreground-muted)] mb-4">
-          This is a minimalistic Mini App built with OnchainKit components.
-        </p>
-        <Button
-          onClick={() => setActiveTab("features")}
-          icon={<Icon name="arrow-right" size="sm" />}
-        >
-          Explore Features
-        </Button>
-      </Card>
-
-      <TodoList />
-
-      {/* Remove these imports: */}
-      {/* import { useAccount } from "wagmi"; */}
-      {/* import { Transaction, TransactionButton, ... } from "@coinbase/onchainkit/transaction"; */}
-      {/* import { useNotification } from "@coinbase/onchainkit/minikit"; */}
-      {/* Remove any usage of TransactionCard, TransactionButton, etc. */}
-    </div>
+    <main className="mt-8">
+      <h2 className="text-2xl font-bold mb-4">Menu</h2>
+      <div className="grid grid-cols-1 gap-6">
+        {/* Example menu items (safehouses/extraction options) */}
+        <div className="border rounded-lg p-4 shadow-sm bg-white">
+          <h3 className="text-lg font-semibold">Pizza Margherita</h3>
+          <p className="text-gray-600 mb-2">Classic pizza with tomato, mozzarella, and basil.</p>
+          <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Order</button>
+        </div>
+        <div className="border rounded-lg p-4 shadow-sm bg-white">
+          <h3 className="text-lg font-semibold">Sushi Platter</h3>
+          <p className="text-gray-600 mb-2">Assorted sushi rolls and sashimi.</p>
+          <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Order</button>
+        </div>
+        <div className="border rounded-lg p-4 shadow-sm bg-white">
+          <h3 className="text-lg font-semibold">Burger Combo</h3>
+          <p className="text-gray-600 mb-2">Juicy beef burger with fries and a drink.</p>
+          <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Order</button>
+        </div>
+      </div>
+    </main>
   );
 }
 
