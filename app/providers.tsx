@@ -1,9 +1,8 @@
 "use client";
 
 import { type ReactNode } from "react";
-// Remove import { base } from "wagmi/chains";
-// Remove import { MiniKitProvider } from "@coinbase/onchainkit/minikit";
-// Replace the Providers component with a simple React fragment or your own context provider:
+import { MiniKitProvider } from "@coinbase/onchainkit/minikit";
+
 export function Providers(props: { children: React.ReactNode }) {
-  return <>{props.children}</>;
+  return <MiniKitProvider>{props.children}</MiniKitProvider>;
 }

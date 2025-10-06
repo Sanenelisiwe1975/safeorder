@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  MiniKitProvider,
   useMiniKit,
   useAddFrame,
   useOpenUrl,
@@ -71,47 +72,55 @@ export default function App() {
   }, [context, frameAdded, handleAddFrame]);
 
   return (
-    <div className="flex flex-col min-h-screen font-sans text-[var(--app-foreground)] mini-app-theme from-[var(--app-background)] to-[var(--app-gray)]">
-      <div className="w-full max-w-md mx-auto px-4 py-3">
-        <header className="flex justify-between items-center mb-3 h-11">
-          <div>
-            <div className="flex items-center space-x-2">
-              <Wallet className="z-10">
-                <ConnectWallet>
-                  <Name className="text-inherit" />
-                </ConnectWallet>
-                <WalletDropdown>
-                  <Identity className="px-4 pt-3 pb-2" hasCopyAddressOnClick>
-                    <Avatar />
-                    <Name />
-                    <Address />
-                    <EthBalance />
-                  </Identity>
-                  <WalletDropdownDisconnect />
-                </WalletDropdown>
-              </Wallet>
+    <MiniKitProvider chain={{
+      id: 8453,
+      name: "Base",
+      nativeCurrency: { name: "Ether", symbol: "ETH", decimals: 18 },
+      rpcUrls: { default: { http: ["https://mainnet.base.org"] } },
+      blockExplorers: { default: { name: "Basescan", url: "https://basescan.org" } },
+    }}>
+      <div className="flex flex-col min-h-screen font-sans text-[var(--app-foreground)] mini-app-theme from-[var(--app-background)] to-[var(--app-gray)]">
+        <div className="w-full max-w-md mx-auto px-4 py-3">
+          <header className="flex justify-between items-center mb-3 h-11">
+            <div>
+              <div className="flex items-center space-x-2">
+                <Wallet className="z-10">
+                  <ConnectWallet>
+                    <Name className="text-inherit" />
+                  </ConnectWallet>
+                  <WalletDropdown>
+                    <Identity className="px-4 pt-3 pb-2" hasCopyAddressOnClick>
+                      <Avatar />
+                      <Name />
+                      <Address />
+                      <EthBalance />
+                    </Identity>
+                    <WalletDropdownDisconnect />
+                  </WalletDropdown>
+                </Wallet>
+              </div>
             </div>
-          </div>
-          <div>{saveFrameButton}</div>
-        </header>
+            <div>{saveFrameButton}</div>
+          </header>
 
-        <main className="flex-1">
-          {activeTab === "home" && <Home setActiveTab={setActiveTab} />}
-          {activeTab === "features" && <Features setActiveTab={setActiveTab} />}
-        </main>
+          <main className="flex-1">
+            {activeTab === "home" && <Home setActiveTab={setActiveTab} />}
+            {activeTab === "features" && <Features setActiveTab={setActiveTab} />}
+          </main>
 
-        <footer className="mt-2 pt-4 flex justify-center">
-          <Button
-            variant="ghost"
-            size="sm"
-            className="text-[var(--ock-text-foreground-muted)] text-xs"
-            onClick={() => openUrl("https://base.org/builders/minikit")}
-          >
-            Built on Base with MiniKit
-          </Button>
-        </footer>
+          <footer className="mt-2 pt-4 flex justify-center">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="text-[var(--ock-text-foreground-muted)] text-xs"
+              onClick={() => openUrl("https://base.org/builders/minikit")}
+            >
+              Built on Base with MiniKit
+            </Button>
+          </footer>
+        </div>
       </div>
-    </div>
+    </MiniKitProvider>
   );
 }
 // Remove these imports:

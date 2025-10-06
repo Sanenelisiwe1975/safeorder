@@ -174,11 +174,11 @@ export function Home({ setActiveTab }: HomeProps) {
 
       <TodoList />
 
-      // Remove these imports:
-      // import { useAccount } from "wagmi";
-      // import { Transaction, TransactionButton, ... } from "@coinbase/onchainkit/transaction";
-      // import { useNotification } from "@coinbase/onchainkit/minikit";
-      // Remove any usage of TransactionCard, TransactionButton, etc.
+      {/* Remove these imports: */}
+      {/* import { useAccount } from "wagmi"; */}
+      {/* import { Transaction, TransactionButton, ... } from "@coinbase/onchainkit/transaction"; */}
+      {/* import { useNotification } from "@coinbase/onchainkit/minikit"; */}
+      {/* Remove any usage of TransactionCard, TransactionButton, etc. */}
     </div>
   );
 }
