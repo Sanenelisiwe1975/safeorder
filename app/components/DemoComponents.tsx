@@ -160,23 +160,28 @@ type HomeProps = {
 export function Home({ setActiveTab }: HomeProps) {
   return (
     <main className="mt-8">
-      <h2 className="text-2xl font-bold mb-4">Menu</h2>
-      <div className="grid grid-cols-1 gap-6">
-        {/* Example menu items (safehouses/extraction options) */}
-        <div className="border rounded-lg p-4 shadow-sm bg-white">
-          <h3 className="text-lg font-semibold">Pizza Margherita</h3>
-          <p className="text-gray-600 mb-2">Classic pizza with tomato, mozzarella, and basil.</p>
-          <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Order</button>
+      <h2 className="text-3xl font-extrabold mb-6 text-center text-blue-700 drop-shadow">🍽️ Today's Menu</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Menu Item 1 */}
+        <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl shadow-lg p-6 flex flex-col items-center hover:scale-105 transition-transform">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="Pizza Margherita" className="w-24 h-24 rounded-full mb-4 shadow-md object-cover" />
+          <h3 className="text-xl font-semibold mb-2 text-blue-900">Pizza Margherita</h3>
+          <p className="text-gray-600 mb-4 text-center">Classic pizza with tomato, mozzarella, and basil.</p>
+          <button className="bg-blue-600 text-white px-6 py-2 rounded-full font-bold shadow hover:bg-blue-700 transition">Order</button>
         </div>
-        <div className="border rounded-lg p-4 shadow-sm bg-white">
-          <h3 className="text-lg font-semibold">Sushi Platter</h3>
-          <p className="text-gray-600 mb-2">Assorted sushi rolls and sashimi.</p>
-          <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Order</button>
+        {/* Menu Item 2 */}
+        <div className="bg-gradient-to-br from-pink-50 to-pink-100 rounded-2xl shadow-lg p-6 flex flex-col items-center hover:scale-105 transition-transform">
+          <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80" alt="Sushi Platter" className="w-24 h-24 rounded-full mb-4 shadow-md object-cover" />
+          <h3 className="text-xl font-semibold mb-2 text-pink-900">Sushi Platter</h3>
+          <p className="text-gray-600 mb-4 text-center">Assorted sushi rolls and sashimi.</p>
+          <button className="bg-pink-600 text-white px-6 py-2 rounded-full font-bold shadow hover:bg-pink-700 transition">Order</button>
         </div>
-        <div className="border rounded-lg p-4 shadow-sm bg-white">
-          <h3 className="text-lg font-semibold">Burger Combo</h3>
-          <p className="text-gray-600 mb-2">Juicy beef burger with fries and a drink.</p>
-          <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Order</button>
+        {/* Menu Item 3 */}
+        <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-2xl shadow-lg p-6 flex flex-col items-center hover:scale-105 transition-transform">
+          <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80" alt="Burger Combo" className="w-24 h-24 rounded-full mb-4 shadow-md object-cover" />
+          <h3 className="text-xl font-semibold mb-2 text-yellow-900">Burger Combo</h3>
+          <p className="text-gray-600 mb-4 text-center">Juicy beef burger with fries and a drink.</p>
+          <button className="bg-yellow-500 text-white px-6 py-2 rounded-full font-bold shadow hover:bg-yellow-600 transition">Order</button>
         </div>
       </div>
     </main>
